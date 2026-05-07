@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NYCRP FBI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #080c10; font-family: 'Rajdhani', sans-serif; color: #a8c4d4; }
+        .fbi-header { background: #06090d; border-bottom: 2px solid #1a3a52; padding: 14px 24px; display: flex; align-items: center; gap: 16px; }
+        .fbi-title h1 { font-size: 17px; font-weight: 700; color: #c8dde8; margin: 0; letter-spacing: 3px; font-family: 'Share Tech Mono', monospace; }
+        .fbi-title p { font-size: 11px; color: #4a7a9a; margin: 2px 0 0; letter-spacing: 2px; text-transform: uppercase; }
+        .fbi-title { flex: 1; }
+        .fbi-nav { background: #06090d; border-bottom: 1px solid #122030; display: flex; }
+        .fbi-nav a { padding: 10px 20px; font-size: 12px; letter-spacing: 2px; color: #4a7a9a; text-decoration: none; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; font-weight: 600; border-bottom: 2px solid transparent; }
+        .fbi-nav a:hover { color: #5aa8d8; border-bottom-color: #5aa8d8; background: #0a1520; }
+        .fbi-body { padding: 20px 24px; max-width: 1200px; margin: 0 auto; }
+        .section-label { font-size: 11px; letter-spacing: 3px; color: #2a6a9a; text-transform: uppercase; font-family: 'Share Tech Mono', monospace; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: #122030; }
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+        .stat-card { background: #06090d; border: 1px solid #122030; border-radius: 6px; padding: 12px 14px; }
+        .stat-num { font-size: 24px; font-weight: 700; color: #5aa8d8; font-family: 'Share Tech Mono', monospace; }
+        .stat-lbl { font-size: 11px; letter-spacing: 1px; color: #3a6a8a; text-transform: uppercase; margin-top: 2px; }
+        .emp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .emp-table th { text-align: left; padding: 8px 12px; font-size: 10px; letter-spacing: 2px; color: #2a6a9a; text-transform: uppercase; border-bottom: 1px solid #122030; }
+        .emp-table td { padding: 10px 12px; border-bottom: 1px solid #0d1e2a; color: #8ab0c4; vertical-align: middle; }
+        .emp-table tr:hover td { background: #0a1520; color: #c8dde8; }
+        .callsign { font-family: 'Share Tech Mono', monospace; color: #5aa8d8; font-size: 12px; }
+        .rank-badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+        .rank-director { background: #1a1a0a; color: #d4a820; border: 1px solid #4a3810; }
+        .rank-supervisor { background: #0a1a2a; color: #5aa8d8; border: 1px solid #1a3a5a; }
+        .rank-agent { background: #0a1a0a; color: #4ac88a; border: 1px solid #1a4a2a; }
+        .rank-trainee { background: #1a0a1a; color: #c858a8; border: 1px solid #4a1a4a; }
+        .div-tag { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; background: #0d1e2a; border: 1px solid #1a3a52; color: #4a8aaa; margin-right: 3px; letter-spacing: 1px; text-transform: uppercase; }
+        .div-hrt { border-color: #5a1a1a; color: #c85858; background: #1a0808; }
+        .view-btn { padding: 4px 12px; border: 1px solid #1a3a52; border-radius: 3px; background: none; color: #3a7aaa; font-size: 11px; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; font-weight: 600; text-decoration: none; display: inline-block; }
+        .view-btn:hover { border-color: #5aa8d8; color: #5aa8d8; background: #0a1520; }
+        .ticker { background: #04070a; border-top: 1px solid #122030; padding: 6px 24px; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #2a5a7a; display: flex; gap: 24px; }
+        .ticker b { color: #3a7aaa; }
+        .status-active { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; display: inline-block; margin-right: 6px; }
+        .status-inactive { width: 7px; height: 7px; border-radius: 50%; background: #4a5a6a; display: inline-block; margin-right: 6px; }
+        .label { font-size: 11px; letter-spacing: 2px; color: #2a6a9a; text-transform: uppercase; font-family: 'Share Tech Mono', monospace; display: block; margin-bottom: 6px; }
+        input, select, textarea { width: 100%; background: #080c10; border: 1px solid #1a3a52; border-radius: 4px; padding: 10px 14px; color: #a8c4d4; font-family: 'Share Tech Mono', monospace; font-size: 13px; margin-bottom: 16px; outline: none; box-sizing: border-box; }
+        input:focus, select:focus, textarea:focus { border-color: #5aa8d8; }
+        .login-btn { width: 100%; background: #1a3a52; border: 1px solid #2a6a9a; border-radius: 4px; padding: 11px; color: #5aa8d8; font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; }
+        .login-btn:hover { background: #2a5a7a; color: #c8dde8; }
+        .pf-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid #0d1e2a; font-size: 12px; }
+        .pf-row:last-child { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <div class="fbi-header">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+            <circle cx="26" cy="26" r="24" stroke="#2a6a9a" stroke-width="1.5" fill="#06090d"/>
+            <circle cx="26" cy="26" r="19" stroke="#1a4a7a" stroke-width="0.8" fill="none"/>
+            <circle cx="26" cy="26" r="14" stroke="#1a3a5a" stroke-width="0.8" fill="none"/>
+            <polygon points="26,10 28.5,18.5 37.5,18.5 30.5,23.5 33,32 26,27 19,32 21.5,23.5 14.5,18.5 23.5,18.5" fill="#2a6a9a"/>
+            <text x="26" y="41" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#4a8aaa" letter-spacing="1.5">FIDELITY BRAVERY INTEGRITY</text>
+            <text x="26" y="8" text-anchor="middle" font-family="monospace" font-size="5" fill="#4a8aaa" letter-spacing="1">DEPARTMENT OF JUSTICE</text>
+        </svg>
+        <div class="fbi-title">
+            <h1>FEDERAL BUREAU OF INVESTIGATION</h1>
+            <p>NYCRP FBI — Personnel Database</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;"></div>
+            <span style="font-size:11px;color:#22c55e;font-family:'Share Tech Mono',monospace;letter-spacing:1px;">SYSTEM ONLINE</span>
+        </div>
+    </div>
+    <div class="fbi-nav">
+        <a href="/employees/">Personnel</a>
+        <a href="/admin/">Admin</a>
+        {% if user.is_authenticated %}
+            <a href="/logout/" style="margin-left:auto;">Logout</a>
+        {% else %}
+            <a href="/login/" style="margin-left:auto;">Login</a>
+        {% endif %}
+    </div>
+    <div class="fbi-body">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="ticker">
+        <span>SYS:</span> <b>DATABASE v2.4.1</b>
+        <span>|</span>
+        <span>SESSION:</span> <b>{% if user.is_authenticated %}SECURE — {{ user.username }}{% else %}NOT LOGGED IN{% endif %}</b>
+    </div>
+</body>
+</html>

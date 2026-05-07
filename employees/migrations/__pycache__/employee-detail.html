@@ -1,0 +1,53 @@
+{% extends 'Employees/base.html' %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+  <a href="/employees/" class="view-btn">← Back to Directory</a>
+  <span style="border:2px solid #5a1a1a;border-radius:4px;padding:3px 12px;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;color:#c85858;">CLASSIFIED</span>
+</div>
+
+<div style="background:#06090d;border:1px solid #1a3a52;border-radius:6px;padding:20px;display:flex;gap:20px;align-items:flex-start;margin-bottom:16px;">
+  <div style="width:72px;height:72px;border-radius:50%;background:#0d1e2a;border:2px solid #2a6a9a;display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:22px;color:#5aa8d8;flex-shrink:0;">
+    {{ employee.roleplay_name|slice:":2"|upper }}
+  </div>
+  <div>
+    <div style="font-size:20px;font-weight:700;color:#c8dde8;letter-spacing:2px;font-family:'Share Tech Mono',monospace;">{{ employee.roleplay_name|upper }}</div>
+    <div style="font-size:13px;color:#2a6a9a;letter-spacing:2px;margin:3px 0;font-family:'Share Tech Mono',monospace;">CALLSIGN: {{ employee.callsign }}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+      <span class="rank-badge rank-{{ employee.rank.name|lower }}">{{ employee.rank }}</span>
+      {% if employee.is_hrt %}<span class="rank-badge" style="background:#1a0808;color:#c85858;border:1px solid #5a1a1a;">HRT</span>{% endif %}
+      {% if employee.user.is_active %}<span class="rank-badge rank-agent">Active</span>{% else %}<span class="rank-badge rank-trainee">Inactive</span>{% endif %}
+    </div>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+  <div style="background:#06090d;border:1px solid #122030;border-radius:6px;padding:14px 16px;">
+    <div class="section-label">Identity</div>
+    <div class="pf-row"><span style="color:#3a6a8a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Roleplay Name</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#a8c4d4;">{{ employee.roleplay_name }}</span></div>
+    <div class="pf-row"><span style="color:#3a6a8a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Roblox</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#a8c4d4;">{{ employee.roblox_username }}</span></div>
+    <div class="pf-row"><span style="color:#3a6a8a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Discord</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#a8c4d4;">{{ employee.discord_username }}</span></div>
+    <div class="pf-row"><span style="color:#3a6a8a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Badge No.</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#a8c4d4;">{{ employee.callsign }}</span></div>
+  </div>
+  <div style="background:#06090d;border:1px solid #122030;border-radius:6px;padding:14px 16px;">
+    <div class="section-label">Assignment</div>
+    <div class="pf-row"><span style="color:#3a6a8a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Rank</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#a8c4d4;">{{ employee.rank }}</span></div>
+    <div class="pf-row"><span style="color:#3a6a8a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Date Joined</span><span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:#a8c4d4;">{{ employee.date_joined }}</span></div>
+    <div class="pf-row"><span style="color:#3a6a8a;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Divisions</span>
+      <span>{% for div in employee.divisions.all %}<span class="div-tag {% if div.name == 'HRT' %}div-hrt{% endif %}">{{ div.name }}</span>{% endfor %}</span>
+    </div>
+  </div>
+</div>
+
+<div style="background:#06090d;border:1px solid #122030;border-radius:6px;padding:14px 16px;">
+  <div class="section-label">Personnel File</div>
+  <div style="font-size:13px;color:#8ab0c4;line-height:1.7;font-family:'Share Tech Mono',monospace;">
+    {{ employee.personal_file|default:"No file notes on record." }}
+  </div>
+</div>
+
+{% if user.is_staff %}
+<div style="margin-top:14px;display:flex;gap:10px;">
+  <a href="/admin/employees/employee/{{ employee.id }}/change/" class="view-btn">Edit Record</a>
+</div>
+{% endif %}
+{% endblock %}

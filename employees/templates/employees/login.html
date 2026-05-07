@@ -1,0 +1,25 @@
+{% extends 'employees/base.html' %}
+{% block content %}
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;">
+  <form method="POST" action="/login/">
+    {% csrf_token %}
+    <div style="height:1px;background:#1a3a52;margin-bottom:24px;"></div>
+    <span class="label">Agent ID / Username</span>
+    <input type="text" name="username" placeholder="Enter your agent ID..." required />
+    <span class="label" style="margin-top:4px;">Password</span>
+    <input type="password" name="password" placeholder="••••••••••••" required />
+    {% if error %}
+      <p style="color:#c85858;font-family:'Share Tech Mono',monospace;font-size:11px;margin-bottom:10px;">
+        Invalid credentials. Access denied.
+      </p>
+    {% endif %}
+    <button type="submit" class="login-btn">Access System</button>
+    <div style="height:1px;background:#122030;margin:20px 0;"></div>
+    <div style="font-size:10px;letter-spacing:1px;color:#2a4a5a;text-align:center;font-family:'Share Tech Mono',monospace;line-height:1.6;">
+      UNAUTHORIZED ACCESS IS PROHIBITED<br>
+      ALL ACTIVITY IS MONITORED AND LOGGED<br>
+      FBI NYCRP — CLASSIFIED SYSTEM
+    </div>
+  </form>
+</div>
+{% endblock %}

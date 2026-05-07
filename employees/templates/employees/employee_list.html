@@ -1,0 +1,44 @@
+{% extends 'employees/base.html' %}
+{% block content %}
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-num">{{ employees.count }}</div><div class="stat-lbl">Total Agents</div></div>
+  <div class="stat-card"><div class="stat-num">{{ active_count }}</div><div class="stat-lbl">Active Duty</div></div>
+  <div class="stat-card"><div class="stat-num">{{ hrt_count }}</div><div class="stat-lbl">HRT Members</div></div>
+  <div class="stat-card"><div class="stat-num">{{ division_count }}</div><div class="stat-lbl">Divisions</div></div>
+</div>
+<div class="section-label">Agent Directory</div>
+<table class="emp-table">
+  <thead>
+    <tr>
+      <th>Callsign</th>
+      <th>Roleplay Name</th>
+      <th>Rank</th>
+      <th>Division</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for emp in employees %}
+    <tr>
+      <td><span class="callsign">{{ emp.callsign }}</span></td>
+      <td>{{ emp.roleplay_name }}</td>
+      <td><span class="rank-badge rank-{{ emp.rank.name|lower }}">{{ emp.rank }}</span></td>
+      <td>
+        {% for div in emp.divisions.all %}
+          <span class="div-tag {% if div.name == 'HRT' %}div-hrt{% endif %}">{{ div.name }}</span>
+        {% endfor %}
+      </td>
+      <td>
+        {% if emp.user.is_active %}
+          <span class="status-active"></span>Active
+        {% else %}
+          <span class="status-inactive"></span>Inactive
+        {% endif %}
+      </td>
+      <td><a href="/employees/{{ emp.id }}/" class="view-btn">View File</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
