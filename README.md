@@ -1,6 +1,6 @@
-# 🔵 NYCRP FBI — Personnel Database
+# 🔵 NYCRP NYPD — Personnel Database
 
-> A classified personnel management system for the NYCRP FBI department in ERLC Roleplay, built with Django.(Note: This Website is not affialated with the Federal Bureau of Investigation or any Federal Agency in the World. This is just a Database for a Emergency Response:Liberty County Roblox Roleplay Server.)
+> A classified personnel management system for the NYCRP NYPD department in ERLC Roleplay, built with Django.(Note: This Website is not affialated with the New york Police Department or any Law Enforcement Agency in the World. This is just a Database for a Emergency Response:Liberty County Roblox Roleplay Server.)
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue?style=flat-square)
 ![Django](https://img.shields.io/badge/Django-5.x-green?style=flat-square)
@@ -10,7 +10,7 @@
 
 ## 📋 About
 
-The NYCRP FBI Personnel Database is an internal management system for the FBI department in the ERLC Roblox roleplay server. It allows directors and admins to manage agents, track divisions, assign ranks, and maintain personnel files for every member of the department.
+The NYCRP NYPD Personnel Database is an internal management system for the NYPD department in the ERLC Roblox roleplay server. It allows directors and admins to manage agents, track divisions, assign ranks, and maintain personnel files for every member of the department.
 
 ---
 
@@ -19,10 +19,10 @@ The NYCRP FBI Personnel Database is an internal management system for the FBI de
 - 🔐 **Secure Login System** — Each agent has their own login account
 - 👤 **Personnel Files** — Detailed profiles for every agent including rank, division, callsign and more
 - 🗂️ **Employee Directory** — Full list of all agents with search and filter
-- 🏅 **Rank Hierarchy** — Full rank system from Trainee to Director
-- 🚨 **HRT Division Tracking** — Hostage Rescue Team members are flagged on their profile
+- 🏅 **Rank Hierarchy** — Full rank system from Trainee to Commisioner
+- 🚨 **ESU Division Tracking** — Emergency Service Unit members are flagged on their profile
 - 🛡️ **Admin Panel** — Directors can add, edit and remove agents
-- 🎨 **FBI-Style UI** — Dark classified database aesthetic throughout
+- 🎨 **Classified-Style UI** — Dark classified database aesthetic throughout
 
 ---
 
@@ -118,7 +118,7 @@ FISA/
 
 ---
 
-## 👮 How To Add An Agent
+## 👮 How To Add An Officer
 
 1. Go to `http://127.0.0.1:8000/admin/`
 2. Log in with your director account
@@ -130,31 +130,8 @@ FISA/
    - Callsign / Badge number
    - Rank
    - Division(s)
-   - HRT status
+   - ESU status
    - Personnel file notes
-
----
-
-## 🏅 Ranks
-
-| Rank | Level |
-|------|-------|
-| Director | 6 |
-| Deputy Director | 5 |
-| Supervisor | 4 |
-| Senior Agent | 3 |
-| Agent | 2 |
-| Trainee | 1 |
-
----
-
-## 🗂️ Divisions
-
-- **Command** — Senior leadership
-- **HRT** — Hostage Rescue Team
-- **Tactical** — Field operations
-- **Cyber** — Digital investigations
-- **General** — General agents
 
 ---
 
@@ -162,8 +139,8 @@ FISA/
 
 | Role | Access |
 |------|--------|
-| Director / Admin | Full access — add, edit, remove agents via `/admin/` |
-| Agent | View employee directory and personnel files |
+| Command Team / Admin | Full superuser access — add, edit, remove agents via `/admin/` |
+| Employee | View employee directory and personnel files |
 | Unauthenticated | Login page only |
 
 ---
@@ -179,12 +156,12 @@ FISA/
 
 ## 📜 License
 
-This project is for internal NYCRP FBI department use only. Not for public distribution.
+This project is for internal NYCRP NYPD department use only. Not for public distribution.
 
 ---
 
 ## 👥 Credits
 
-Built and maintained by the NYCRP FBI Command Staff.
+Built and maintained by the NYCRP NYPD Officer F22GHOST.
 
-> *Fidelity — Bravery — Integrity*
+> *"Fidelis Ad Mortem"*
