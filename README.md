@@ -17,8 +17,8 @@ The NYCRP NYPD Personnel Database is an internal management system for the NYPD 
 ## ✨ Features
 
 - 🔐 **Secure Login System** — Each agent has their own login account
-- 👤 **Personnel Files** — Detailed profiles for every agent including rank, division, callsign and more
-- 🗂️ **Employee Directory** — Full list of all agents with search and filter
+- 👤 **Personnel Files** — Detailed profiles for every officer including rank, division, callsign and more
+- 🗂️ **Employee Directory** — Full list of all officer with search and filter
 - 🏅 **Rank Hierarchy** — Full rank system from Trainee to Commisioner
 - 🚨 **ESU Division Tracking** — Emergency Service Unit members are flagged on their profile
 - 🛡️ **Admin Panel** — Directors can add, edit and remove agents
@@ -150,7 +150,7 @@ FISA/
 - [Python](https://python.org)
 - [Django](https://djangoproject.com)
 - [SQLite](https://sqlite.org) — default database
-- HTML / CSS — custom FBI-style UI
+- HTML / CSS — custom Classified-style UI
 
 ---
 
